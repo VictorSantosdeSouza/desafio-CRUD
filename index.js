@@ -4,15 +4,17 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerOptions = require('./config/swagger');
 const empresaRoutes = require('./routes/empresaRoutes');
+require('dotenv').config(); // ← Carrega variáveis do .env
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(express.json());
 
-// ⚠️ ATENÇÃO: Substitua pela sua string de conexão real do MongoDB Atlas
-const MONGO_URI = "mongodb+srv://Teste:TEste1@cluster0.nqslldz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+// Conexão com MongoDB usando variável de ambiente
+const MONGO_URI = process.env.MONGO_URI;
+
 mongoose.connect(MONGO_URI)
     .then(() => console.log('Conectado ao MongoDB!'))
     .catch(err => console.error('Erro ao conectar:', err));
