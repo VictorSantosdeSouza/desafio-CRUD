@@ -1,5 +1,4 @@
 const swaggerOptions = {
-  // A CHAVE CORRETA É "definition", NÃO "swaggerDefinition"
   definition: {
     openapi: '3.0.0',
     info: {
